@@ -22,16 +22,10 @@ const Ticket = mongoose.model("Ticket", ticketSchema);
 app.get("/api/tickets", async (req, res) => {
   let searchText = req.query.searchText;
   try {
-    let arr = [];
     Ticket.find({}).then((result) => {
-      for (let ticket of result) {
-        if (searchText) {
-          if (ticket.title.includes(searchText)) {
-            arr.push(ticket);
-          }
-        } else {
-          res.json(result);
-        }
+      let arr = result;
+      if (searchText) {
+        arr = result.filter((ticket) => ticket.title.includes(searchText));
       }
       res.json(arr);
     });
@@ -41,39 +35,27 @@ app.get("/api/tickets", async (req, res) => {
   }
 });
 
-// app.patch("/api/tickets/:ticketId/done", async (req, res) => {
-//   let ticketId = req.params.ticketId;
-//   console.log(result);
-//   Ticket.findByIdAndUpdate(ticketId, { $set: { done: true } })
-//     .then((result) => {
-//       if (!result) return res.status(404).json({ err: "cannot find ticket" });
-//       return res.json({ update: true });
-//     })
-//     .catch((err) => {
-//       if (err.name === "CastError")
-//         return res.status(400).json({ err: "Invalid Id" });
-//       return res.status(500).json({ err: err.message });
-//     });
-// });
-
 app.patch("/api/tickets/:ticketId/done", async (req, res) => {
-  let id = req.params.ticketId;
+  let { ticketId } = req.params;
+  console.log(ticketId);
   try {
-    Ticket.find({}).then((result) => {
-      for (let ticket of result) {
-        if (ticket._id == id) {
-          console.log(ticket.done);
-          let obj = ticket;
-          obj.done = true;
-          console.log(obj);
-          Ticket.update({ _id: ObjectId(id) }, { $set: updateObject });
-          res.json({ updated: true });
-        }
-      }
-    });
+    await Ticket.findOneAndUpdate(ticketId, { done: true });
+    return res.json({ updated: true });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "error ocurred: ", error: error.message });
+    return res.send(error);
+  }
+});
+
+app.patch("/api/tickets/:ticketId/undone", async (req, res) => {
+  let { ticketId } = req.params;
+  console.log(ticketId);
+  try {
+    await Ticket.findOneAndUpdate(ticketId, { done: false });
+    return res.json({ updated: true });
+  } catch (error) {
+    console.log(error);
+    return res.send(error);
   }
 });
 

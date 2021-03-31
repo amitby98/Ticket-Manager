@@ -2,25 +2,24 @@ import { useState } from "react";
 import HideButton from "./HideButton";
 
 function Ticket({
+  ticket,
   title,
   content,
   userEmail,
   creationTime,
   labels,
   updateCounter,
+  hiddenTickets,
+  setHiddenTickets,
 }) {
-  const [hidden, setHidden] = useState(false);
+  // const [hidden, setHidden] = useState(false);
   const handleHide = () => {
-    if (!hidden) {
-      setHidden(true);
-    }
+    console.log(ticket);
+    setHiddenTickets([...hiddenTickets, ticket]);
+    console.log(hiddenTickets);
   };
 
-  const unsetHidden = () => {
-    setHidden(false);
-  };
-
-  if (hidden) {
+  if (hiddenTickets.includes(ticket)) {
     return null;
   }
 
@@ -45,4 +44,5 @@ function Ticket({
     </div>
   );
 }
+
 export default Ticket;

@@ -7,9 +7,11 @@ function SearchBox() {
   let ticketArray = [];
   const [count, setCount] = useState(0);
   const [data, setData] = useState([]);
+  const [hiddenTickets, setHiddenTickets] = useState([]);
   // const [search, setSearch] = useState("");
 
   const showAll = () => {
+    setHiddenTickets([]);
     setCount(0);
   };
 
@@ -31,7 +33,11 @@ function SearchBox() {
 
   const showButton = () => {
     if (count >= 1) {
-      return <button onClick={showAll}>Show all</button>;
+      return (
+        <button Id="restoreHideTickets" onClick={showAll}>
+          Show all
+        </button>
+      );
     }
   };
 
@@ -43,6 +49,7 @@ function SearchBox() {
     <div>
       <span>
         <input
+          Id="searchInput"
           className="input"
           type="text"
           onChange={(e) => updateTickets(e.target.value)}
@@ -51,16 +58,23 @@ function SearchBox() {
         {showButton()}
       </span>
       <div>
-        {data.map((ticket) => (
-          <Ticket
-            title={ticket.title}
-            content={ticket.content}
-            userEmail={ticket.userEmail}
-            creationTime={ticket.creationTime}
-            labels={ticket.labels}
-            updateCounter={() => setCount(count + 1)}
-          />
-        ))}
+        {data.map((ticket) => {
+          // console.log(ticket);
+
+          return (
+            <Ticket
+              ticket={ticket}
+              title={ticket.title}
+              content={ticket.content}
+              userEmail={ticket.userEmail}
+              creationTime={ticket.creationTime}
+              labels={ticket.labels}
+              updateCounter={() => setCount(count + 1)}
+              hiddenTickets={hiddenTickets}
+              setHiddenTickets={setHiddenTickets}
+            />
+          );
+        })}
       </div>
     </div>
   );

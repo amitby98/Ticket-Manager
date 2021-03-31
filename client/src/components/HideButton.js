@@ -3,7 +3,11 @@ function HideButton({ handleHide, updateCounter }) {
     handleHide();
     updateCounter();
   };
-  return <button onClick={wrapperFunction}>Hide</button>;
+  return (
+    <button className="hideTicketButton" onClick={wrapperFunction}>
+      Hide
+    </button>
+  );
 }
 
 export default HideButton;

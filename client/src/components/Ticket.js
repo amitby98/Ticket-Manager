@@ -36,9 +36,9 @@ function Ticket({
         {labels?.map((label) => (
           <label
             // key={label.id}
-            className={label}
+            className={`label ${label}`}
           >
-            {label + " "}
+            {label}
           </label>
         ))}
       </span>

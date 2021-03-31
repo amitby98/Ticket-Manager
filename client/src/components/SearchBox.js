@@ -4,56 +4,14 @@ import Ticket from "./Ticket";
 import axios from "axios";
 
 function SearchBox() {
-  ////Testing array, retrieve mongoDB values later
-  // let ticketArray = [
-  //   <Ticket
-  //     title="titleee"
-  //     content="sssssss"
-  //     userEmail="nivm200"
-  //     creationTime="2018-11-13T12:13:55.544Z"
-  //     labels={[`test `, `Guidelines`]}
-  //     updateCounter={() => setCount(count + 1)}
-  //   />,
-  //   <Ticket
-  //     title="title2"
-  //     content="2222222222"
-  //     userEmail="nivm200"
-  //     creationTime="2018-11-13T12:13:55.544Z"
-  //     labels={[`Corvid `, `test`]}
-  //     updateCounter={() => setCount(count + 1)}
-  //   />,
-  //   <Ticket
-  //     title="title3"
-  //     content="33333333"
-  //     userEmail="nivm200"
-  //     creationTime="2018-11-13T12:13:55.544Z"
-  //     labels={[`Corvid `, `Guidelines`, `API`]}
-  //     updateCounter={() => setCount(count + 1)}
-  //   />,
-  // ];
-
   let ticketArray = [];
-  //End of testing array.
   const [count, setCount] = useState(0);
   const [data, setData] = useState([]);
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
 
-  ////////////////////
   const showAll = () => {
     setCount(0);
-    // arrayTest.map((ticket) => {});
   };
-  //////////////////
-  // useEffect(() => {
-  //   function ComponentDidUpdate() {
-  //     axios.get(`/api/tickets`).then((res) => {
-  //       let array = res.data;
-  //       setData(array);
-  //       console.log(array);
-  //       console.log("cheeseeee");
-  //     });
-  //   }
-  // });
 
   const updateTickets = (args) => {
     if (!args) {
@@ -63,7 +21,7 @@ function SearchBox() {
       let arr = ticketArray.filter((ticket) => ticket.title.include(args));
       setData(arr);
     } else {
-      axios.get(`/api/tickets/?searchText=` + args).then((res) => {
+      axios.get(`/api/tickets?searchText=` + args).then((res) => {
         let array = res.data;
         ticketArray = array;
         setData(array);
@@ -77,13 +35,17 @@ function SearchBox() {
     }
   };
 
+  useEffect(() => {
+    updateTickets();
+  }, []);
+
   return (
     <div>
       <span>
         <input
+          className="input"
           type="text"
           onChange={(e) => updateTickets(e.target.value)}
-          //it works! :D
         />
         <HiddenCounter count={count} showAll={showAll} />
         {showButton()}

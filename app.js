@@ -19,13 +19,19 @@ const ticketSchema = new mongoose.Schema({
 
 const Ticket = mongoose.model("Ticket", ticketSchema);
 
+app.get("/", (req, res) => {
+  res.sendFile("client/public/index.html");
+});
+
 app.get("/api/tickets", async (req, res) => {
   let searchText = req.query.searchText;
   try {
     Ticket.find({}).then((result) => {
       let arr = result;
       if (searchText) {
-        arr = result.filter((ticket) => ticket.title.includes(searchText));
+        arr = result.filter((ticket) =>
+          ticket.title.toLowerCase().includes(searchText.toLowerCase())
+        );
       }
       res.json(arr);
     });

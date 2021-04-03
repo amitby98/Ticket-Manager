@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import HiddenCounter from "./HiddenCounter";
 import Ticket from "./Ticket";
 import axios from "axios";
+import "../SearchBox.css";
 
 function SearchBox() {
   let ticketArray = [];
@@ -34,7 +35,7 @@ function SearchBox() {
     if (count >= 1) {
       return (
         <button Id="restoreHideTickets" onClick={showAll}>
-          Show all
+          RESTORE
         </button>
       );
     }
@@ -46,17 +47,21 @@ function SearchBox() {
 
   return (
     <div>
-      <span>
-        <input
-          id="searchInput"
-          className="input"
-          type="text"
-          onChange={(e) => updateTickets(e.target.value)}
-        />
-        <HiddenCounter count={count} showAll={showAll} />
-        {showButton()}
-      </span>
-      <div>
+      <div id="form">
+        <span>
+          <input
+            id="searchInput"
+            className="input"
+            type="text"
+            name="search"
+            placeholder=" I'm looking for.."
+            onChange={(e) => updateTickets(e.target.value)}
+          />
+          <HiddenCounter count={count} showAll={showAll} />
+          {showButton()}
+        </span>
+      </div>
+      <div className="tickets">
         {data.map((ticket) => {
           return (
             <Ticket

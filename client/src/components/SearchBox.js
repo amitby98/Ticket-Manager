@@ -48,7 +48,7 @@ function SearchBox() {
     <div>
       <span>
         <input
-          Id="searchInput"
+          id="searchInput"
           className="input"
           type="text"
           onChange={(e) => updateTickets(e.target.value)}
@@ -58,8 +58,6 @@ function SearchBox() {
       </span>
       <div>
         {data.map((ticket) => {
-          // console.log(ticket);
-
           return (
             <Ticket
               ticket={ticket}

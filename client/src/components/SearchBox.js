@@ -8,7 +8,6 @@ function SearchBox() {
   const [count, setCount] = useState(0);
   const [data, setData] = useState([]);
   const [hiddenTickets, setHiddenTickets] = useState([]);
-  // const [search, setSearch] = useState("");
 
   const showAll = () => {
     setHiddenTickets([]);

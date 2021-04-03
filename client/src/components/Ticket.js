@@ -12,7 +12,6 @@ function Ticket({
   hiddenTickets,
   setHiddenTickets,
 }) {
-  // const [hidden, setHidden] = useState(false);
   const handleHide = () => {
     console.log(ticket);
     setHiddenTickets([...hiddenTickets, ticket]);
@@ -33,12 +32,7 @@ function Ticket({
       </p>
       <span>
         {labels?.map((label) => (
-          <label
-            // key={label.id}
-            className={`label ${label}`}
-          >
-            {label}
-          </label>
+          <label className={`label ${label}`}>{label}</label>
         ))}
       </span>
     </div>

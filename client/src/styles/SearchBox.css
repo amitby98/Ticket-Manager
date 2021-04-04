@@ -18,7 +18,24 @@ input[type="text"]:focus {
   justify-content: space-around;
   padding: 0 2rem;
   margin-top: 4rem;
+  height: 45em;
+  overflow: scroll;
+  scroll-behavior: smooth;
 }
 #form {
   font-size: 1.5rem;
+}
+
+#showDiv {
+  background-color: pink;
+  z-index: 4;
+  box-shadow: -2px -2px 8px 5px rgb(20, 20, 20);
+  width: 40%;
+  position: fixed;
+  top: 30%;
+  right: 30%;
+}
+
+#showHeader {
+  font-size: 1.8em;
 }

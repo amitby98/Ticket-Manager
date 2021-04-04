@@ -14,14 +14,17 @@ function Ticket({
   updateCounter,
   hiddenTickets,
   setHiddenTickets,
+  setShow,
+  setTitle,
 }) {
-  const [hidden, setHidden] = useState("hidden");
-  const showMore = () => {
-    setHidden("shown");
-  };
+  const [done, setDone] = useState("undone");
 
-  const showLess = () => {
-    setHidden("hidden");
+  const changeDone = () => {
+    if (done === "done") {
+      setDone("undone");
+    } else {
+      setDone("done");
+    }
   };
 
   const handleHide = () => {
@@ -31,12 +34,14 @@ function Ticket({
   if (hiddenTickets.includes(ticket)) {
     return null;
   }
+  let classname = "ticket ";
+  classname = classname + done;
 
   return (
-    <div className="ticket">
+    <div className={classname}>
       <div className="ticket-header">
         <HideButton handleHide={handleHide} updateCounter={updateCounter} />
-        <DoneButton />
+        <DoneButton changeDone={changeDone} />
         <h3 className="ticket-title">{title}</h3>
       </div>
       <div className="ticket-labels">
@@ -47,15 +52,22 @@ function Ticket({
           ))}
         </span>
       </div>
-      <div className={hidden}>
+      <div className="hidden">
         <p className="ticket-content">
           {content}
           <br />
         </p>
       </div>
-      <ShowSpan className="show-more" showMore={showMore} showLess={showLess} />
-      <span>By {userEmail}</span>
-      <span id="creationTime">{creationTime}</span>
+      <ShowSpan
+        setShow={setShow}
+        content={ticket.content}
+        setTitle={setTitle}
+        title={ticket.title}
+      />
+      <div id="footer">
+        <span>By {userEmail}</span>
+        <span id="creationTime">{creationTime}</span>
+      </div>
     </div>
   );
 }

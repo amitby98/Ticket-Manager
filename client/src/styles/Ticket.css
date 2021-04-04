@@ -14,12 +14,17 @@
 }
 .ticket-content,
 .ticket-title {
-  width: 15rem;
+  width: 20rem;
   word-wrap: break-word;
 }
 
 .ticket-title {
   padding: 2rem 0 0;
+  font-size: 1.5em;
+}
+
+.ticket-content {
+  font-size: 1.2em;
 }
 
 .ticket-labels {
@@ -35,7 +40,7 @@
   border-radius: 0.2rem;
   padding: 0.2rem;
   font-weight: 700;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   margin-right: 0.2rem;
   margin-bottom: 0.2rem;
   box-shadow: 0 0 15px -3px rgb(0 0 0 / 29%);
@@ -81,17 +86,22 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-line-clamp: 3; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
 
 /* what to do when a ticket change? */
-.shown {
-}
+/* .shown {
+} */
 
 #show {
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 1.1em;
+}
+#footer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5em;
 }
 
 #hideTicketButton {
@@ -118,19 +128,11 @@
   opacity: 0.8;
 }
 
-#undone-button {
-  position: absolute;
-  left: 0.6rem;
-  margin-top: -0.3rem;
-  width: 1.6rem;
-  opacity: 0;
-}
-
 #creationTime {
   padding-top: 0.5rem;
-  /* opacity: 0; */
 }
 
-/* .ticket:hover #creationTime {
-  opacity: 1;
-} */
+.done {
+  /* background-color: rgb(167, 164, 164); */
+  opacity: 0.3;
+}

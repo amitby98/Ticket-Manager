@@ -2,13 +2,13 @@ import React from "react";
 import logo from "../done-icon.png";
 
 function DoneButton(props) {
-  const setDone = (bool) => {
-    if (bool) {
-    } else {
-    }
-  };
-
-  return <img src={logo} id="done-button" />;
+  return (
+    <img
+      onClick={() => props.changeDone()}
+      src={logo}
+      alt="done-logo"
+      id="done-button"
+    />
+  );
 }
-
 export default DoneButton;

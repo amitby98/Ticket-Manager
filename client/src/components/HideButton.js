@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../hiden-icon.png";
+import logo from "../hidden-icon.png";
 
 function HideButton({ handleHide, updateCounter }) {
   const wrapperFunction = () => {
@@ -7,10 +7,12 @@ function HideButton({ handleHide, updateCounter }) {
     updateCounter();
   };
   return (
-    // <button id="hideTicketButton" onClick={wrapperFunction}>
-    //   Hide
-    // </button>
-    <img src={logo} id="hideTicketButton" onClick={wrapperFunction} />
+    <img
+      alt="hide-logo"
+      src={logo}
+      id="hideTicketButton"
+      onClick={wrapperFunction}
+    />
   );
 }
 

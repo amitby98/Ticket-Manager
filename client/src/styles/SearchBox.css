@@ -1,0 +1,68 @@
+h1 {
+  margin-bottom: 1.2rem;
+  font-size: 4rem;
+  color: #8e8d8a;
+}
+
+input[type="text"] {
+  width: 15rem;
+  height: 2.5rem;
+  border-radius: 10px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+input[type="text"]:focus {
+  width: 30%;
+  outline-style: none;
+}
+.tickets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 2rem;
+  margin-top: 3rem;
+  height: 45em;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+
+#showDiv {
+  background-color: #ddd8d8;
+  z-index: 4;
+  box-shadow: -2px -2px 8px 5px rgb(192, 189, 189);
+  width: 40%;
+  position: fixed;
+  top: 30%;
+  right: 30%;
+}
+
+#showHeader {
+  font-size: 1.8em;
+}
+
+#closeButton {
+  margin-top: 1em;
+  font-size: 1.5rem;
+  padding: 0 0.8rem;
+}
+
+#hidden-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+#counter-span {
+  font-size: 1em;
+  font-style: italic;
+  margin-right: 1.5rem;
+}
+
+#restoreHideTickets {
+  padding: 0.1rem;
+  font-weight: bold;
+}

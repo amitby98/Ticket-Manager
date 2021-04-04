@@ -1,0 +1,19 @@
+#done-button {
+  position: absolute;
+  left: 0.6rem;
+  margin-top: -0.3rem;
+  width: 1.6rem;
+  opacity: 0;
+}
+
+.ticket:hover #done-button {
+  opacity: 1;
+}
+
+#undone-button {
+  position: absolute;
+  left: 0.6rem;
+  margin-top: -0.3rem;
+  width: 1.6rem;
+  opacity: 0;
+}

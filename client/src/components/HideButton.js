@@ -10,7 +10,7 @@ function HideButton({ handleHide, updateCounter }) {
     <img
       alt="hide-logo"
       src={logo}
-      id="hideTicketButton"
+      className="hideTicketButton"
       onClick={wrapperFunction}
     />
   );

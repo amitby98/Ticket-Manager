@@ -48,7 +48,12 @@ function Ticket({
         {" "}
         <span>
           {labels?.map((label) => (
-            <label className={`label ${label}`}>{label}</label>
+            <label
+              key={Math.floor(Math.random() * 10000000000 + 1)}
+              className={`label ${label}`}
+            >
+              {label}
+            </label>
           ))}
         </span>
       </div>

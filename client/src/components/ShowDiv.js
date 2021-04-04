@@ -7,7 +7,9 @@ function ShowDiv({ content, setShow, title }) {
         <h1 id="showHeader">{title}</h1>
         {content}
         <br />
-        <button onClick={() => setShow("")}>close</button>
+        <button id="closeButton" onClick={() => setShow("")}>
+          Close
+        </button>
       </div>
     );
   }

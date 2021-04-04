@@ -2,8 +2,8 @@ function HiddenCounter({ count }) {
   const showHiddenCounter = () => {
     if (count >= 1) {
       return (
-        <span>
-          Hidden tickets: <span Id="hideTicketsCounter">{count}</span>{" "}
+        <span id="counter-span">
+          (<span id="hideTicketsCounter">{count}</span> Hidden tickets)
         </span>
       );
     }

@@ -3,40 +3,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Optima;
-  /* font-family: Geneva; */
 }
 .App {
   text-align: center;
-  /* background-color: #d2e2ff; */
+  background-color: #eae7dc;
   z-index: 1;
-}
-
-h1 {
-  margin-bottom: 2rem;
-  font-size: 4rem;
-  color: purple;
-}
-
-#hideTicketButton {
-  position: absolute;
-  right: 1rem;
-  width: 2rem;
-  height: 1.8rem;
-  opacity: 0;
-}
-
-.ticket:hover #hideTicketButton {
-  opacity: 1;
-}
-
-#done-button {
-  position: absolute;
-  left: 0.6rem;
-  margin-top: -0.3rem;
-  width: 1.6rem;
-  opacity: 0;
-}
-
-.ticket:hover #done-button {
-  opacity: 0.8;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }

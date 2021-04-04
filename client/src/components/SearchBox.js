@@ -7,9 +7,9 @@ import "../styles/SearchBox.css";
 
 function SearchBox() {
   let ticketArray = [];
-  const [count, setCount] = useState(0);
   const [shown, setShown] = useState("");
   const [data, setData] = useState([]);
+  const [count, setCount] = useState(0);
   const [hiddenTickets, setHiddenTickets] = useState([]);
   const [title, setTitle] = useState("");
 
@@ -41,7 +41,7 @@ function SearchBox() {
   const showButton = () => {
     if (count >= 1) {
       return (
-        <button Id="restoreHideTickets" onClick={showAll}>
+        <button id="restoreHideTickets" onClick={showAll}>
           RESTORE
         </button>
       );
@@ -55,7 +55,8 @@ function SearchBox() {
 
   return (
     <div>
-      <div id="form">
+      <h1>Tickets Manager</h1>
+      <div>
         <span>
           <input
             id="searchInput"
@@ -65,15 +66,18 @@ function SearchBox() {
             placeholder=" I'm looking for.."
             onChange={(e) => updateTickets(e.target.value)}
           />
+        </span>
+        <div id="hidden-div">
           <HiddenCounter count={count} showAll={showAll} />
           {showButton()}
-        </span>
+        </div>
       </div>
       <ShowDiv content={shown} title={title} setShow={setShow} />
       <div className="tickets">
         {data.map((ticket) => {
           return (
             <Ticket
+              key={Math.floor(Math.random() * 10000000000 + 1)}
               ticket={ticket}
               title={ticket.title}
               content={ticket.content}

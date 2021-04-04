@@ -1,6 +1,8 @@
 import { useState } from "react";
 import HideButton from "./HideButton";
-import "../Ticket.css";
+import ShowSpan from "./ShowSpan";
+import DoneButton from "./DoneButton";
+import "../styles/Ticket.css";
 
 function Ticket({
   ticket,
@@ -13,10 +15,17 @@ function Ticket({
   hiddenTickets,
   setHiddenTickets,
 }) {
+  const [hidden, setHidden] = useState("hidden");
+  const showMore = () => {
+    setHidden("shown");
+  };
+
+  const showLess = () => {
+    setHidden("hidden");
+  };
+
   const handleHide = () => {
-    console.log(ticket);
     setHiddenTickets([...hiddenTickets, ticket]);
-    console.log(hiddenTickets);
   };
 
   if (hiddenTickets.includes(ticket)) {
@@ -27,7 +36,8 @@ function Ticket({
     <div className="ticket">
       <div className="ticket-header">
         <HideButton handleHide={handleHide} updateCounter={updateCounter} />
-        <h3>{title}</h3>
+        <DoneButton />
+        <h3 className="ticket-title">{title}</h3>
       </div>
       <div className="ticket-labels">
         {" "}
@@ -37,12 +47,15 @@ function Ticket({
           ))}
         </span>
       </div>
-      <p className="ticket-content">
-        {content}
-        <br />
-        <span id="show-more"> Show more</span>
-      </p>
-      By {userEmail} | {creationTime}
+      <div className={hidden}>
+        <p className="ticket-content">
+          {content}
+          <br />
+        </p>
+      </div>
+      <ShowSpan className="show-more" showMore={showMore} showLess={showLess} />
+      <span>By {userEmail}</span>
+      <span id="creationTime">{creationTime}</span>
     </div>
   );
 }

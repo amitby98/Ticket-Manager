@@ -1,3 +1,6 @@
+import React from "react";
+import logo from "../done-icon.png";
+
 function DoneButton(props) {
   const setDone = (bool) => {
     if (bool) {
@@ -5,7 +8,7 @@ function DoneButton(props) {
     }
   };
 
-  return <button></button>;
+  return <img src={logo} id="done-button" />;
 }
 
 export default DoneButton;

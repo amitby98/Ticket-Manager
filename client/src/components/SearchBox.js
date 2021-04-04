@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import HiddenCounter from "./HiddenCounter";
 import Ticket from "./Ticket";
 import axios from "axios";
-import "../SearchBox.css";
+import "../styles/SearchBox.css";
 
 function SearchBox() {
   let ticketArray = [];
